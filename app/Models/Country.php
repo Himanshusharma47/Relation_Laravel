@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
-    public function posts(){     
-        return $this->hasManyThrough('App\Models\Post','App\Models\User','country_id','user_id');  
-       }  
+    protected $fillable = [
+        'country_name',
+    ];
+
+    public function posts() {
+        return $this->hasManyThrough('App\Models\Post','App\Models\User','country_id','user_id');
+       }
 }

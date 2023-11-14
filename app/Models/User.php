@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -33,7 +33,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    
+
     /**
      * The attributes that should be cast.
      *
@@ -44,21 +44,27 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function post()  
-    {  
-        // return $this->hasOne(Post::class);  // one to one 
+    public function post()
+    {
+        // return $this->hasOne(Post::class);  // one to one
         return $this->hasMany(Post::class);  // one to many
-    }  
+    }
 
-    public function contact()  
-    {  
-        // return $this->hasOne(Contact::class);  // one to one 
-        return $this->hasMany(Contact::class);  // one to many 
-    }  
+    public function contact()
+    {
+        // return $this->hasOne(Contact::class);  // one to one
+        return $this->hasMany(Contact::class);  // one to many
+    }
 
-    public function role()  
-    {  
-        return $this->belongsToMany('App\Models\Role','roles_users');  // many to many
-    }   
+    public function role()
+    {
+        return $this->belongsToMany(Role::class,'roles_users');  // many to many
+    }
+
+    public function image()
+    {
+        // return $this->morphOne(Image::class,'imagable'); // for one to one (poly)
+        return $this->morphMany(Image::class,'imagable'); // // for one to many (poly)
+    }
 
 }

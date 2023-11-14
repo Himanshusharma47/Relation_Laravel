@@ -13,5 +13,15 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-   
+
+    function image()
+    {
+        // return $this->morphOne(Image::class,'imagable'); // for one to one (poly)
+        return $this->morphMany(Image::class,'imagable'); // for one to many (poly)
+    }
+
+    function tags()
+    {
+        return $this->morphedByMany(Tag::class,'taggable');
+    }
 }

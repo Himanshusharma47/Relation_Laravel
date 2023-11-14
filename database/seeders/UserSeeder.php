@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Contact;
-use App\Models\User;
+use App\Models\{Contact,
+                User,
+                Country,
+};
 
 class UserSeeder extends Seeder
 {
@@ -23,6 +25,10 @@ class UserSeeder extends Seeder
             'user_id' => 1 ,
             'phone_no' => '1234567980',
             'address' => 'Delhi,Pritampur'
+        ]);
+
+        Country::create([
+            'country_name' => 'india',
         ]);
     }
 }
